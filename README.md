@@ -142,9 +142,13 @@ Z : 좀비 프로세스
 
 
 10. TIME :	총 CPU 사용 시간
+
 11. COMMAND :	프로세스를 실행한 명령어 또는 프로그램
+
 12. STIME :	프로세스가 시작된 시간 혹은 날짜
+
 13. C (System V) / CP (BSD) :	짧은 기간 동안의 CPU 사용률
+
 14. F	: 플래그
 
 4 : used super-user privileges
@@ -156,18 +160,66 @@ Z : 좀비 프로세스
 0 : 어떤 플래그에도 해당하지 않는 경우
 
 15. PRI :	실제 실행 우선순위
+
 16. NI :	nice 우선순위 번호
 
 ---
 ### jobs
->
+> 실행중인 프로세스 목록 확인
+![image](https://github.com/seaweed2/opensw_prac2/assets/95917813/caf3dc26-4d77-4b50-9e58-d476c316616e)
+
+* 명령어 옵션
+  1. -l :	프로세스 ID와 함께 잡 목록 출력
+  2. -n :	마지막 알림 이후 변경된 잡만 출력
+  3. -p :	잡의 프로세스 ID만 출력
+  4. -r :	실행중인 잡만 출력
+  5. -s :	중지된 잡만 출력
+
+
+* 출력 항목(PID, Status, 명령어)
+1. Running    |	작업 진행중
+2. Done       |	작업이 완료되어 0 반환
+3. Done(code) |	작업이 종료되었으며 0이 아닌 코드를 반환
+4. Stopped    |	작업 일시 중단
+5. Stopped(SIGTSTP)	SIGTSTP | 시그널이 작업을 일시 중단
+6. Stopped(SIGSTOP)	SIGSTOP | 시그널이 작업을 일시 중단
+7. Stopped(SIGTTIN)	SIGTTIN | 시그널이 작업을 일시 중단
+8. Stopped(SIGTTOU)	SIGTTOU | 시그널이 작업을 일시 중단
 
 
 
 ***
 ### kill
->
+> 프로세스 종료
+![image](https://github.com/seaweed2/opensw_prac2/assets/95917813/2fab93a9-ba22-4826-bfc8-946937c1cbee)
 
 
+* 명령어 옵션
+ 1. -s <signal> :	특정 시그널을 사용하여 프로세스 종료(기본적으로 SIGTERM 시그널 사용)
+ 2. -l :	지원되는 시그널 목록 출력
+ 3. -a :	현재 사용자에 속한 모든 프로세스 종료
+ 4. -q :	프로세스에 시그널을 보내는 대신 시그널을 대기열에 출력
+ 5. -9 <pid> :	SIGKILL 시그널을 사용하여 프로세스 강제 종료
+ 6. killall <프로세스명> :	특정 프로세스 이름을 가진 모든 프로세스 종료
+
+* SIGNAL
+![image](https://github.com/seaweed2/opensw_prac2/assets/95917813/f4923995-daea-4d4e-8365-f2b8a0c80f12)
+
+  
+1  |	SIGHUP  |	hangup, 로그아웃 등 접속을 끊을 때 발생하는 신호. 특정 실행 중인 프로그램이 사용하는 설정 파일을 변경시키고 변화된 내용을 적용할 때 사용
+
+2  |	SIGINT  |	현재 동작하는 프로그램을 일시중지, <ctrl>+c
+
+9  |	SIGKILL |	프로그램 강제 종료
+
+11 |	SIGSEGV |	잘못된 메모리 관리시 생기는 신호
+
+15 |	SIGTERM |	정상적인 종료 기본으로 이 시그널을 사용한다
+
+18 |	SIGCONT |	중지되어 있는 프로그램을 재실행
+
+19 |	SIGSTOP |	프로그램 중지
+
+20 |	SIGTSTP |	터미널에서 중지되어 있는 신호
 
 ***
